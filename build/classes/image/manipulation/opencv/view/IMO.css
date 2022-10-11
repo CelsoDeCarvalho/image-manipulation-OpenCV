@@ -1,0 +1,10 @@
+.body{
+    -fx-background-image: url(../images/PhotoshopSuaOrigemeImpactoEmNossasVidas_Prancheta1_c7030ec43a7fe755455b86e95125740f_2000-995x520.png);
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+
+.botao{
+    -fx-cursor: hand;
+}

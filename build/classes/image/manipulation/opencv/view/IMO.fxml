@@ -51,7 +51,11 @@
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="IMAGE" nodeOrientation="RIGHT_TO_LEFT" size="20" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="IMAGE" nodeOrientation="RIGHT_TO_LEFT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </FontAwesomeIconView>
                      </graphic>
                   </Button>
                   <Button mnemonicParsing="false" opacity="0.47" prefHeight="60.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: black;" styleClass="botao" stylesheets="@IMO.css" text="Camera" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -59,7 +63,11 @@
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CAMERA" size="20" />
+                        <FontAwesomeIconView fill="WHITE" glyphName="CAMERA">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </FontAwesomeIconView>
                      </graphic></Button>
                </children>
                <BorderPane.margin>

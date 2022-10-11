@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="image-manipulation-OpenCV.jnlp">
+  <information>
+    <title>image-manipulation-OpenCV</title>
+    <vendor>decarvalho</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="image-manipulation-OpenCV.jar" size="516311" download="eager" />
+    <jar href="lib/fontawesomefx-8.5.jar" size="181458" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="image-manipulation-OpenCV" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="image.manipulation.opencv.ImageManipulationOpenCV"  name="image-manipulation-OpenCV" />
+  <update check="always"/>
+</jnlp>
