@@ -18,7 +18,6 @@ public class ImageManipulationOpenCV extends Application {
         URL url = new File("src/image/manipulation/opencv/view/IMO.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root);
-        stage.setMaximized(true);
         stage.setTitle("IMO-CV");
         stage.setScene(scene);
         stage.centerOnScreen();
