@@ -43,7 +43,7 @@
          <bottom>
             <VBox alignment="CENTER_LEFT" prefHeight="153.0" prefWidth="520.0" styleClass="footer" stylesheets="@IMO.css" BorderPane.alignment="TOP_RIGHT">
                <children>
-                  <Button mnemonicParsing="false" opacity="0.73" prefHeight="60.0" prefWidth="205.0" style="-fx-background-radius: 10; -fx-background-color: #50e6cc;" styleClass="botao" stylesheets="@IMO.css" text="Carregar imagem" textFill="WHITE" VBox.vgrow="ALWAYS">
+                  <Button fx:id="loadImageId" mnemonicParsing="false" onAction="#loadImage" opacity="0.73" prefHeight="60.0" prefWidth="205.0" style="-fx-background-radius: 10; -fx-background-color: #50e6cc;" styleClass="botao" stylesheets="@IMO.css" text="Carregar imagem" textFill="WHITE" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -51,11 +51,7 @@
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="IMAGE" nodeOrientation="RIGHT_TO_LEFT">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="IMAGE" nodeOrientation="RIGHT_TO_LEFT" size="20" />
                      </graphic>
                   </Button>
                   <Button mnemonicParsing="false" opacity="0.47" prefHeight="60.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: black;" styleClass="botao" stylesheets="@IMO.css" text="Camera" textFill="WHITE" VBox.vgrow="ALWAYS">
@@ -63,11 +59,7 @@
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView fill="WHITE" glyphName="CAMERA">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="CAMERA" size="20" />
                      </graphic></Button>
                </children>
                <BorderPane.margin>

@@ -13,6 +13,9 @@ import javafx.stage.Stage;
  * @author decarvalho
  */
 public class ImageManipulationOpenCV extends Application {
+
+    private static Stage stage;
+
     @Override
     public void start(Stage stage) throws Exception {
         URL url = new File("src/image/manipulation/opencv/view/IMO.fxml").toURI().toURL();
@@ -21,6 +24,7 @@ public class ImageManipulationOpenCV extends Application {
         stage.setTitle("IMO-CV");
         stage.setScene(scene);
         stage.centerOnScreen();
+        this.stage = stage;
         stage.show();
     }
 
@@ -30,5 +34,8 @@ public class ImageManipulationOpenCV extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
+    public static Stage getStage() {
+        return stage;
+    }
 }
