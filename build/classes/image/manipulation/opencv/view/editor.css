@@ -2,6 +2,7 @@
  * Empty Stylesheet file.
  */
 
-.mainFxmlClass {
-
+.myButton .imageView {
+   -fx-fit-width: 100%;
+   -fx-fit-height: 100%;
 }

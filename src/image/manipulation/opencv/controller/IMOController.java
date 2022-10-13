@@ -36,7 +36,6 @@ public class IMOController implements Initializable {
         if (file != null) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/image/manipulation/opencv/view/Editor.fxml"));
             root = loader.load();
-            EditorController editorController = loader.getController();
             EditorController.setFile(file);
             Utility.mostrarJanela("src/image/manipulation/opencv/view/Editor.fxml", "Editor", event);
         }

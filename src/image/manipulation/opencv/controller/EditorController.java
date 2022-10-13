@@ -14,8 +14,10 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -34,6 +36,11 @@ public class EditorController implements Initializable {
     }
 
     @FXML
+    private AnchorPane imagePanel;
+
+    @FXML
+    private TextField angleValue;
+
     void testar(ActionEvent event) {
 
     }
@@ -50,10 +57,36 @@ public class EditorController implements Initializable {
             try {
                 url = file.toURI().toURL();
                 image.setImage(new Image(url.toString()));
+//                image.fitHeightProperty().bind(imagePanel.heightProperty());
+//                image.fitWidthProperty().bind(imagePanel.widthProperty());
             } catch (MalformedURLException ex) {
                 Logger.getLogger(EditorController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    private int getAngleValue() {
+        if (!angleValue.getText().isEmpty()) {
+            return Integer.parseInt(angleValue.getText());
+        }
+        return 20;
+    }
+
+    @FXML
+    private void onRigthRotate(ActionEvent event) {
+        System.out.println(angleValue.getText());
+        double value = image.getRotate();
+        image.setRotate(value + getAngleValue());
+    }
+
+    @FXML
+    private void onLeftRotate(ActionEvent event) {
+        double value = image.getRotate();
+        image.setRotate(value - getAngleValue());
+    }
+
+    @FXML
+    private void onAngleChange(ActionEvent event) {
     }
 
 }
