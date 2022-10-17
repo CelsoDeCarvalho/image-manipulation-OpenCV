@@ -5,16 +5,14 @@
  */
 package image.manipulation.opencv.service;
 
-import image.manipulation.opencv.ImageManipulationOpenCV;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -22,15 +20,14 @@ import javafx.stage.Stage;
  * @author decarvalho
  */
 public class Utility {
-
+    
     public static void mostrarJanela(String caminho, String title, ActionEvent event) throws IOException {
-        ((Node) event.getSource()).getScene().getWindow().hide();
-        ImageManipulationOpenCV.getStage().close();
         URL url = new File(caminho).toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle(title);
         stage.show();
     }

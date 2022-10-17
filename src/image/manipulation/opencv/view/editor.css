@@ -2,7 +2,6 @@
  * Empty Stylesheet file.
  */
 
-.myButton .imageView {
-   -fx-fit-width: 100%;
-   -fx-fit-height: 100%;
+.imageView {
+-fx-background-color: bisque;
 }
