@@ -17,7 +17,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -38,36 +37,34 @@ import javax.imageio.ImageIO;
  * @author decarvalho
  */
 public class EditorController implements Initializable {
-    
+
     public static File file;
     private final Alert alert = new Alert(AlertType.NONE);
-    
+
     @FXML
     private ImageView image;
-    
+
     @FXML
     private ScrollPane imageWrapper;
-    
+
     public static void setFile(File file) {
         EditorController.file = file;
     }
-    
+
     @FXML
     private TextField angleValue;
-    @FXML
-    private Button saveImage;
-    @FXML
-    private TextField scaleX;
-    @FXML
-    private TextField scaleY;
     @FXML
     private Slider brilho;
     @FXML
     private Slider saturacao;
     @FXML
     private Slider contraste;
-    
+
     private final ColorAdjust colorAdjust = new ColorAdjust();
+    @FXML
+    private TextField transX;
+    @FXML
+    private TextField transY;
 
     /**
      * Initializes the controller class.
@@ -89,28 +86,28 @@ public class EditorController implements Initializable {
                 Logger.getLogger(EditorController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
-    
+
     private int getAngleValue() {
         if (!angleValue.getText().isEmpty()) {
             return Integer.parseInt(angleValue.getText());
         }
         return 20;
     }
-    
+
     @FXML
     private void onRigthRotate(ActionEvent event) {
         double value = image.getRotate();
         image.setRotate(value + getAngleValue());
     }
-    
+
     @FXML
     private void onLeftRotate(ActionEvent event) {
         double value = image.getRotate();
         image.setRotate(value - getAngleValue());
     }
-    
+
     @FXML
     private void onScaleLess(ActionEvent event) {
         double scaleXValue = image.getScaleX();
@@ -118,7 +115,7 @@ public class EditorController implements Initializable {
         image.setScaleX(scaleXValue - 0.05);
         image.setScaleY(scaleYValue - 0.05);
     }
-    
+
     @FXML
     private void onScalePlus(ActionEvent event) {
         double scaleXValue = image.getScaleX();
@@ -126,7 +123,7 @@ public class EditorController implements Initializable {
         image.setScaleX(scaleXValue + 0.05);
         image.setScaleY(scaleYValue + 0.05);
     }
-    
+
     @FXML
     void onSaveImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
@@ -134,7 +131,7 @@ public class EditorController implements Initializable {
         FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
         FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
         fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-        
+
         File savedFile = fileChooser.showSaveDialog(null);
         if (savedFile != null) {
             try {
@@ -143,7 +140,7 @@ public class EditorController implements Initializable {
                 alert.setTitle("Gravar imagem");
                 alert.setContentText("Imagem gravada com sucesso");
                 alert.setAlertType(AlertType.INFORMATION);
-                
+
             } catch (IOException ex) {
                 alert.setTitle("Gravar imagem");
                 alert.setContentText("Falha ao gravar a imagem");
@@ -153,77 +150,80 @@ public class EditorController implements Initializable {
             }
         }
     }
-    
+
     @FXML
     private void onCropChange(ActionEvent event) {
     }
-    
+
     @FXML
     private void onPB(ActionEvent event) {
         colorAdjust.setSaturation(-1);
         image.setEffect(colorAdjust);
     }
-    
+
     @FXML
     private void onBrilho(MouseEvent event) {
         colorAdjust.setBrightness(brilho.getValue());
         image.setEffect(colorAdjust);
     }
-    
+
     @FXML
     private void onSaturacao(MouseEvent event) {
         colorAdjust.setSaturation(saturacao.getValue());
         image.setEffect(colorAdjust);
     }
-    
+
     @FXML
     private void onContraste(MouseEvent event) {
         colorAdjust.setContrast(contraste.getValue());
         image.setEffect(colorAdjust);
     }
-    
+
     @FXML
     private void onSepia(ActionEvent event) {
         SepiaTone sepiaTone = new SepiaTone();
         sepiaTone.setLevel(0.7);
         image.setEffect(sepiaTone);
     }
-    
+
     @FXML
     private void onNormal(ActionEvent event) {
         image.setEffect(null);
     }
-    
+
     private void onDragged(MouseEvent event) {
-        
+
     }
-    
+
     @FXML
     private void onTopTrans(ActionEvent event) {
-        double scaleY = image.getTranslateY();
-        image.setTranslateY(scaleY - 10);
+        double scaleYValue = image.getTranslateY();
+        image.setTranslateY(scaleYValue - 10);
     }
-    
+
     @FXML
     private void onLeftTrans(ActionEvent event) {
-            double scaleX = image.getTranslateX();
-        image.setTranslateX(scaleX - 10);
+        double scaleXValue = image.getTranslateX();
+        image.setTranslateX(scaleXValue - 10);
     }
-    
+
     @FXML
     private void onBorderTrans(ActionEvent event) {
+        image.setTranslateX(Integer.parseInt(transX.getText()));
+        
+        image.setTranslateY(Integer.parseInt(transY.getText()));
     }
-    
+
     @FXML
     private void onRightTrans(ActionEvent event) {
-        double scaleX = image.getTranslateX();
-        image.setTranslateX(scaleX + 10);
+        double scaleXValue = image.getTranslateX();
+        image.setTranslateX(scaleXValue + 10);
     }
-    
+
     @FXML
     private void onDownTrans(ActionEvent event) {
-        double scaleY = image.getTranslateY();
-        image.setTranslateY(scaleY + 10);
+        double scaleYValue = image.getTranslateY();
+        image.setTranslateY(scaleYValue + 10);
     }
-    
+
 }
